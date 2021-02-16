@@ -1,34 +1,14 @@
-import {button} from 'react-bootstrap';
-import { useEffect, useState } from 'react';
-import getData from '../Helpers/getData.js'
+import {useState} from 'react';
+import './StylesCard.css';
 
-const Degrees = () => {
-    const [degrees, setDegrees] = useState(
-        {
-            main: {
-                temp: '',
-                temp_max: '',
-                temp_min: ''
-            }
-    })
-
-    useEffect(()=>{
-      getData()
-      .then(data => {
-        setDegrees(data)
-      })
-    }, [])
-
-    const changeDegrees = () => {
-        alert('button')
-    }
-
+const Degrees = ({tempC, tempF}) => {
+    const [isCelsius, setIsCelsius] = useState(true);
     return(
-        <div className='degrees'>
-            <h3>{degrees.main.temp}°C</h3>
-            <h5>Max: {degrees.main.temp_max}°C</h5>
-            <h5>Min: {degrees.main.temp_min}°C</h5>
-            <button className='button' onClick={changeDegrees}>Convert Degrees</button>
+        <div>
+            <h1>
+                {isCelsius ? tempC : tempF} {isCelsius ? "°C" : "°F"}
+            </h1>
+            <button className="button" onClick={() => setIsCelsius(!isCelsius)}>Degrees °C/°F</button>
         </div>
     )
 }

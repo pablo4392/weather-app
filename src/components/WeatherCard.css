@@ -25,7 +25,7 @@
     margin-bottom: 0;
 }
 
-.qwe {
+.subtitle {
     display: flex;
     justify-content: center;
 }
@@ -45,14 +45,12 @@
 }
 
 .temp {
-    background-color: red;
     margin: 0.5rem;
     width: 230px;
     height: 200px;
 }
 
-.data {
-    font-size: 20px;
+.wind {
     margin: 0.5rem;
     width: 230px;
     height: 200px;

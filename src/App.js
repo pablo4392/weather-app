@@ -2,6 +2,7 @@ import './App.css';
 import GetData from './Helpers/GetData.js'
 import WeatherCard from './components/WeatherCard.js'
 import {useEffect, useState} from 'react'
+import Degrees from './components/Degrees';
 
 function App() {
   const [continent, setContinent] = useState("");
@@ -10,8 +11,11 @@ function App() {
   const [condition, setCondition] = useState("");
   const [icon, setIcon] = useState("");
   const [humidity, setHumidity] = useState("");
-  const [windSpeed, setWindSpeed] = useState("");
   const [windDir, setWindDir] = useState("");
+  const [celsius, setCelsius] = useState("");
+  const [farenheit, setFarenheit] = useState("");
+  const [kilometers, setKilometers] = useState("");
+  const [miles, setMiles] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) =>{
@@ -26,8 +30,11 @@ function App() {
         setCondition(res.data.current.condition.text)
         setIcon(res.data.current.condition.icon)
         setHumidity(res.data.current.humidity)
-        setWindSpeed(res.data.current.wind_kph)
         setWindDir(res.data.current.wind_dir)
+        setCelsius(res.data.current.temp_c)
+        setFarenheit(res.data.current.temp_f)
+        setKilometers(res.data.current.wind_kph)
+        setMiles(res.data.current.wind_mph)
       })
     })
   }, [])
@@ -42,8 +49,11 @@ function App() {
       condition={condition}
       icon={icon}
       humidity={humidity}
-      windSpeed={windSpeed}
       windDir={windDir}
+      windKm={kilometers}
+      windMi={miles}
+      celsius={celsius}
+      farenheit={farenheit}
       />
     </div>
   );
