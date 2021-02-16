@@ -1,0 +1,16 @@
+.App{
+  height: 100vh;
+  background-color: #a1cae2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 60px;
+  font-family: 'Impact';
+  color: #161d6f;
+}
