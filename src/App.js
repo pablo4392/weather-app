@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState} from 'react';
 import WeatherCard from './components/WeatherCard';
 import GetData from './comunication/GetData';
-import Spinner from './spinner/Spinner';
+// import Spinner from './spinner/Spinner';
 import MoreInfo from './components/MoreInfo';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const [windDir, setWindDir] = useState("");
   const [windKilometers, setWindKilometers] = useState("");
   const [windMiles, setWindMiles] = useState("");
-  const [hasData, setHasData] = useState(false);
+  // const [hasData, setHasData] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -25,7 +25,7 @@ function App() {
       
       GetData(lat, long).then(res => {
         console.log(res.data)
-        setHasData(true)
+        // setHasData(true)
         setCountry(res.data.location.country);
         setState(res.data.location.region);
         setIcon(res.data.current.condition.icon);
@@ -43,14 +43,16 @@ function App() {
 
   return (
     <div className="App">
-      {hasData ? (
+      <WeatherCard country={country} state={state} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
+      <MoreInfo humidity={humidity} windDirection={windDir} kilometers={windKilometers} miles={windMiles} />
+      {/* {hasData ? (
         <>
           <WeatherCard country={country} state={state} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
           <MoreInfo humidity={humidity} windDirection={windDir} kilometers={windKilometers} miles={windMiles} />
         </>
       ) : (
         <Spinner />
-      )}
+      )} */}
     </div>
   );
 }

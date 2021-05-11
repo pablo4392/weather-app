@@ -5,18 +5,18 @@ import Wind from './Wind'
 const MoreInfo = ({humidity, windDirection, kilometers, miles}) => {
 
     return(
-        <div className="info">
-            <div className="row">
-                <div className="col-4 col-sm-12 info-box">
-                    <h6>Humidity</h6>
+        <div className="margin-info">
+            <div className="row info">
+                <div className="col-4 info-box">
+                    <h6 className="info-title">Humidity</h6>
                     <h3>{humidity}%</h3>
                 </div>
-                <div className="col-4 col-sm-12 info-box">
-                    <h6>Wind direction</h6>
+                <div className="col-4 info-box">
+                    <h6 className="info-title">Wind direction</h6>
                     <h5>{windDirection}</h5>
                 </div>
-                <div className="col-4 col-sm-12 info-box">
-                    <h6>Wind speed</h6>
+                <div className="col-4 info-box">
+                    <h6 className="info-title">Wind speed</h6>
                     <Wind windKm={kilometers} windMi={miles} />
                 </div>
             </div>
