@@ -46,8 +46,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <WeatherCard country={country} state={state} continent={continent} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
-      <MoreInfo humidity={humidity} windDirection={windDir} kilometers={windKilometers} miles={windMiles} /> */}
       {hasData ? (
         <>
           <WeatherCard country={country} state={state} continent={continent} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
