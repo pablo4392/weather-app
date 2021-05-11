@@ -1,23 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from 'react';
+import WeatherCard from './components/WeatherCard';
+import GetData from './comunication/GetData';
+import Spinner from './spinner/Spinner';
+import MoreInfo from './components/MoreInfo';
 
 function App() {
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [icon, setIcon] = useState("");
+  const [iconDescription, setIconDescription] = useState("");
+  const [humidity, setHumidity] = useState("");
+  const [celsius, setCelsius] = useState("");
+  const [fahrenheit, setFahrenheit] = useState("");
+  const [windDir, setWindDir] = useState("");
+  const [windKilometers, setWindKilometers] = useState("");
+  const [windMiles, setWindMiles] = useState("");
+  const [hasData, setHasData] = useState(false);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      
+      GetData(lat, long).then(res => {
+        console.log(res.data)
+        setHasData(true)
+        setCountry(res.data.location.country);
+        setState(res.data.location.region);
+        setIcon(res.data.current.condition.icon);
+        setIconDescription(res.data.current.condition.text);
+        setHumidity(res.data.current.humidity);
+        setCelsius(res.data.current.temp_c);
+        setFahrenheit(res.data.current.temp_f);
+        setWindDir(res.data.current.wind_dir);
+        setWindKilometers(res.data.current.wind_kph);
+        setWindMiles(res.data.current.wind_mph)     ;
+      })
+
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {hasData ? (
+        <>
+          <WeatherCard country={country} state={state} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
+          <MoreInfo humidity={humidity} windDirection={windDir} kilometers={windKilometers} miles={windMiles} />
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 }
