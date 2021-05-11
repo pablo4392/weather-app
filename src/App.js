@@ -1,7 +1,7 @@
 import './App.css';
 import {useEffect, useState} from 'react';
-import WeatherCard from './components/WeatherCard';
 import GetData from './comunication/GetData';
+import WeatherCard from './components/WeatherCard';
 import MoreInfo from './components/MoreInfo';
 import Spinner from './spinner/Spinner';
 
