@@ -48,8 +48,21 @@ function App() {
     <div className="App">
       {hasData ? (
         <>
-          <WeatherCard country={country} state={state} continent={continent} icon={icon} description={iconDescription} celsius={celsius} fahrenheit={fahrenheit} />
-          <MoreInfo humidity={humidity} windDirection={windDir} kilometers={windKilometers} miles={windMiles} />
+          <WeatherCard 
+            country={country} 
+            state={state} 
+            continent={continent} 
+            icon={icon} 
+            description={iconDescription} 
+            celsius={celsius} 
+            fahrenheit={fahrenheit} 
+          />
+          <MoreInfo 
+            humidity={humidity} 
+            windDirection={windDir} 
+            kilometers={windKilometers} 
+            miles={windMiles} 
+          />
         </>
       ) : (
         <Spinner />
