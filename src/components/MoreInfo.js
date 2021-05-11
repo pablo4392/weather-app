@@ -11,7 +11,7 @@ const MoreInfo = ({humidity, windDirection, kilometers, miles}) => {
                     <h6 className="info-title">Humidity</h6>
                     <h3>{humidity}%</h3>
                 </div>
-                <div className="col-4 info-box">
+                <div className="col-4 border-info-box">
                     <h6 className="info-title">Wind direction</h6>
                     <h5>{windDirection}</h5>
                 </div>

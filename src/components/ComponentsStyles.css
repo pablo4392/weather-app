@@ -3,14 +3,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(8, 147, 247, 0.5);
+    background-color: rgba(8, 147, 247, 0.3);
     border: solid 5px #325288;
     border-radius: 20px;
 }
 
 .icon {
-    width: 120px;
-    height: 120px;
+    margin: 8px;
+    width: 110px;
+    height: 110px;
+}
+
+.title-location {
+    margin: 0;
 }
 
 /* MORE INFO  */
@@ -20,11 +25,20 @@
 
 .info {
     padding: 5px;
-    background-color: rgba(8, 147, 247, 0.5);
+    background-color: rgba(8, 147, 247, 0.3);
     border: solid 5px #325288;
     border-radius: 10px;
 }
 
+.info-box {
+    
+}
+
+.border-info-box {
+    border-right: solid 3px #325288;
+    border-left: solid 3px #325288;
+}
+
 .info-title {
-    margin: 0;
+    margin: 5px 0;
 }
