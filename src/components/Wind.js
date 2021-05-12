@@ -6,10 +6,10 @@ const Wind = ({windKm, windMi}) => {
 
     return(
         <div>
-            <h5>
+            <h5 className="dimension-color" >
                 {isKilometers ? windKm : windMi} {isKilometers ? "Km/h" : "Mi/h"}
             </h5>
-            <button className="btn btn-outline-primary btn-sm" onClick={() => setIsKilometers(!isKilometers)}> Km/Mi </button>
+            <button className="btn btn-outline-light btn-sm" onClick={() => setIsKilometers(!isKilometers)}> Km/Mi </button>
         </div>
     )
 }

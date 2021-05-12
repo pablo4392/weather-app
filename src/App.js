@@ -8,17 +8,17 @@ import Spinner from './spinner/Spinner';
 function App() {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
-  const [continent, setContinent] = useState("");
+  const [colony, setColony] = useState("");
   const [icon, setIcon] = useState("");
   const [iconDescription, setIconDescription] = useState("");
   const [humidity, setHumidity] = useState("");
   const [celsius, setCelsius] = useState("");
   const [fahrenheit, setFahrenheit] = useState("");
-  const [windDir, setWindDir] = useState("");
+  const [clouds, setClouds] = useState("");
   const [windKilometers, setWindKilometers] = useState("");
   const [windMiles, setWindMiles] = useState("");
   const [hasData, setHasData] = useState(false);
-
+ 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -29,13 +29,13 @@ function App() {
         setHasData(true)
         setCountry(res.data.location.country);
         setState(res.data.location.region);
-        setContinent(res.data.location.tz_id)
+        setColony(res.data.location.name)
         setIcon(res.data.current.condition.icon);
         setIconDescription(res.data.current.condition.text);
         setHumidity(res.data.current.humidity);
         setCelsius(res.data.current.temp_c);
         setFahrenheit(res.data.current.temp_f);
-        setWindDir(res.data.current.wind_dir);
+        setClouds(res.data.current.cloud);
         setWindKilometers(res.data.current.wind_kph);
         setWindMiles(res.data.current.wind_mph)     ;
       },
@@ -51,7 +51,7 @@ function App() {
           <WeatherCard 
             country={country} 
             state={state} 
-            continent={continent} 
+            colony={colony} 
             icon={icon} 
             description={iconDescription} 
             celsius={celsius} 
@@ -59,7 +59,7 @@ function App() {
           />
           <MoreInfo 
             humidity={humidity} 
-            windDirection={windDir} 
+            clouds={clouds}
             kilometers={windKilometers} 
             miles={windMiles} 
           />

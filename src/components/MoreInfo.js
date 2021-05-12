@@ -1,24 +1,33 @@
 import "./ComponentsStyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Wind from './Wind'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCloud, faWind, faTint} from '@fortawesome/free-solid-svg-icons'
+import Wind from './Wind';
 
-const MoreInfo = ({humidity, windDirection, kilometers, miles}) => {
+const MoreInfo = ({humidity, clouds, kilometers, miles}) => {
 
     return(
-        <div className="margin-info">
-            <div className="row info">
-                <div className="col-4 info-box">
-                    <h6 className="info-title">Humidity</h6>
-                    <h3>{humidity}%</h3>
-                </div>
-                <div className="col-4 border-info-box">
-                    <h6 className="info-title">Wind direction</h6>
-                    <h5>{windDirection}</h5>
-                </div>
-                <div className="col-4 info-box">
-                    <h6 className="info-title">Wind speed</h6>
-                    <Wind windKm={kilometers} windMi={miles} />
-                </div>
+        <div className="info">
+            <div className="info-box">
+                <h6 className="info-title">
+                    <FontAwesomeIcon icon={faTint} className="icon-weather" />
+                    Humidity
+                </h6>
+                <h3 className="dimension-color">{humidity}%</h3>
+            </div>
+            <div className="info-box info-box-border">
+                <h6 className="info-title">
+                    <FontAwesomeIcon icon={faCloud} className="icon-weather" />
+                    Clouds
+                </h6>
+                <h3 className="dimension-color">{clouds}%</h3>
+            </div>
+            <div className="info-box">
+                <h6 className="info-title">
+                    <FontAwesomeIcon icon={faWind} className="icon-weather" />
+                    Wind
+                </h6>
+                <Wind windKm={kilometers} windMi={miles} />
             </div>
         </div>
     )
