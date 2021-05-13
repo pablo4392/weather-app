@@ -51,6 +51,10 @@ function App() {
       break;
       case 'Moderate rain': setBackgroundColor("#4b778d")
       break;
+      case 'Moderate rain at times': setBackgroundColor("#4b778d")
+      break;
+      case 'Sunny': setBackgroundColor("#fea82f")
+      break;
       default: setBackgroundColor('#fea82f')
     }
   }, [weatherDescription])
