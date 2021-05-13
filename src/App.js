@@ -10,7 +10,7 @@ function App() {
   const [state, setState] = useState("");
   const [colony, setColony] = useState("");
   const [icon, setIcon] = useState("");
-  const [iconDescription, setIconDescription] = useState("");
+  const [weatherDescription, setWeatherDescription] = useState("");
   const [humidity, setHumidity] = useState("");
   const [celsius, setCelsius] = useState("");
   const [fahrenheit, setFahrenheit] = useState("");
@@ -18,20 +18,21 @@ function App() {
   const [windKilometers, setWindKilometers] = useState("");
   const [windMiles, setWindMiles] = useState("");
   const [hasData, setHasData] = useState(false);
- 
+  const [backgroundColor, setBackgroundColor] = useState(null)
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       
       GetData(lat, long).then(res => {
-        console.log(res.data)
         setHasData(true)
+        console.log(res.data)
         setCountry(res.data.location.country);
         setState(res.data.location.region);
         setColony(res.data.location.name)
         setIcon(res.data.current.condition.icon);
-        setIconDescription(res.data.current.condition.text);
+        setWeatherDescription(res.data.current.condition.text);
         setHumidity(res.data.current.humidity);
         setCelsius(res.data.current.temp_c);
         setFahrenheit(res.data.current.temp_f);
@@ -44,8 +45,16 @@ function App() {
     });
   }, []);
 
+  useEffect(()=>{
+    switch(weatherDescription) {
+      case 'Moderate or heavy rain with thunder': setBackgroundColor("#6e7c7c")
+      break;
+      default: setBackgroundColor('#fea82f')
+    }
+  }, [weatherDescription])
+
   return (
-    <div className="App">
+    <div className="App" style={{background: backgroundColor}}>
       {hasData ? (
         <>
           <WeatherCard 
@@ -53,7 +62,7 @@ function App() {
             state={state} 
             colony={colony} 
             icon={icon} 
-            description={iconDescription} 
+            description={weatherDescription} 
             celsius={celsius} 
             fahrenheit={fahrenheit} 
           />
