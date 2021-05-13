@@ -49,6 +49,8 @@ function App() {
     switch(weatherDescription) {
       case 'Moderate or heavy rain with thunder': setBackgroundColor("#6e7c7c")
       break;
+      case 'Moderate rain': setBackgroundColor("#4b778d")
+      break;
       default: setBackgroundColor('#fea82f')
     }
   }, [weatherDescription])
