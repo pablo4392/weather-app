@@ -27,7 +27,6 @@ function App() {
       
       GetData(lat, long).then(res => {
         setHasData(true)
-        console.log(res.data)
         setCountry(res.data.location.country);
         setState(res.data.location.region);
         setColony(res.data.location.name)
