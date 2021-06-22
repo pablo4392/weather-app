@@ -54,6 +54,8 @@ function App() {
       break;
       case 'Partly cloudy': setBackgroundColor("#d8e3e7")
       break;
+      case 'Overcast': setBackgroundColor("#293B5F")
+      break;
       case 'Sunny': setBackgroundColor("#fea82f")
       break;
       default: setBackgroundColor('#fea82f')
